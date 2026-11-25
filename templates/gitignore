@@ -1,0 +1,29 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Scraped data, run history, exports, logs (never committed unless asked)
+data/
+*.log
+!schedule_approvals.log
+
+# Framework caches (cleared by `clean` / `run --fresh`)
+.scrapy/
+*.sqlite
+http_cache*/
+jobdir/
+
+# Secrets and sessions
+.env
+.env.*
+!.env.example
+storage_state*.json
+cookies*.json
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

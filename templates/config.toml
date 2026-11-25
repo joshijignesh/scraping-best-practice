@@ -1,0 +1,38 @@
+# <Site> scraper: settings. Change values here, not in the code. Unknown keys are rejected.
+
+[site]
+base_url = "https://example.com"
+
+[scrape]
+# "incremental": fetch a record only when it is new, its list row changed, it wasn't checked for
+#                `refresh_after_days`, or one of its pages/links is missing. Everything else is read
+#                from data/captures.
+# "full":        fetch every record again (run --full).
+mode = "incremental"
+refresh_after_days = 7           # 0 = never re-check an unchanged record
+sample_size = 20                 # records in a --sample run (or: first list page)
+min_delay_seconds = 2.0          # pause between two requests to the site
+navigation_timeout_seconds = 60
+retries = 2                      # with backoff + a new session
+abort_after_consecutive_failures = 5
+headless = true                  # run --headed to watch the browser
+
+[capture]
+# Screenshots are evidence for humans, saved per run in data/runs/<run_id>/screenshots/.
+# Data is always read from the saved HTML/JSON, never from screenshots.
+screenshots = true
+screenshot_format = "png"        # "jpeg" is 3-5x smaller
+viewport_width = 1280
+keep_runs = 20                   # run folders to keep (0 = keep all)
+
+[export]
+# Build only the formats chosen for this project: csv, excel, xml, json, docx.
+# Default: csv + excel.
+formats = ["csv", "excel"]
+basename = "records"             # -> data/exports/records_sample.csv, records_full.xlsx, ...
+
+[storage]
+data_dir = "data"                # relative to the project folder
+
+[notify]
+desktop_notification = true
