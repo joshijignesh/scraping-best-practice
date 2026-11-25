@@ -34,6 +34,31 @@ are throttled, retried and guarded by a lock; settings live in `config.toml`.
 
 ## Install
 
+The repo is both a **Claude Code plugin** (with its own marketplace) and a plain **skill**
+folder. Pick one method; installing both loads the same skill twice.
+
+### Option A: as a plugin (recommended)
+
+Inside Claude Code:
+
+```
+/plugin marketplace add joshijignesh/scraping-best-practice
+/plugin install scraping-best-practice@scraping-best-practice
+```
+
+Or from a terminal:
+
+```bash
+claude plugin marketplace add joshijignesh/scraping-best-practice
+claude plugin install scraping-best-practice@scraping-best-practice
+```
+
+Update with `claude plugin marketplace update scraping-best-practice` and then
+`claude plugin update scraping-best-practice@scraping-best-practice`. Restart Claude Code after
+installing or updating.
+
+### Option B: as a skill folder
+
 Globally (available in every project):
 
 ```bash
@@ -46,7 +71,10 @@ For one project only:
 git clone https://github.com/joshijignesh/scraping-best-practice.git .claude/skills/scraping-best-practice
 ```
 
-Update later with `git -C ~/.claude/skills/scraping-best-practice pull`.
+Update later with `git -C ~/.claude/skills/scraping-best-practice pull`. Because the folder
+contains `.claude-plugin/plugin.json`, Claude Code loads it as the plugin
+`scraping-best-practice@skills-dir`. Turn it off with
+`claude plugin disable scraping-best-practice@skills-dir`.
 
 ## Use
 
@@ -64,6 +92,9 @@ console preview, verification report, file paths, screenshots folder.
 ## What's inside
 
 ```
+.claude-plugin/
+  plugin.json                 plugin manifest (the repo root is the skill)
+  marketplace.json            one-plugin marketplace, so /plugin install works
 SKILL.md                      the ten steps, gates, command contract, checklist
 references/
   framework-choice.md         Playwright vs Scrapy vs httpx vs API: decision table + mapping

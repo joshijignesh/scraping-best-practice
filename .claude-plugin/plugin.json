@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "scraping-best-practice",
+  "version": "1.0.0",
+  "description": "Ten-step gated workflow for any web scraping project (Playwright, Scrapy, httpx, APIs): structure, export (CSV/Excel default; XML/JSON/DOCX on request), debug, cross-verify, per-run screenshots, clean re-fetch, sample, full run, approval-gated scheduling, GitHub push.",
+  "author": {
+    "name": "Jignesh Joshi",
+    "url": "https://github.com/joshijignesh"
+  },
+  "homepage": "https://github.com/joshijignesh/scraping-best-practice",
+  "repository": "https://github.com/joshijignesh/scraping-best-practice",
+  "license": "MIT",
+  "keywords": ["scraping", "web-scraping", "playwright", "scrapy", "data-extraction", "csv", "excel", "best-practices"],
+  "skills": ["./"]
+}
